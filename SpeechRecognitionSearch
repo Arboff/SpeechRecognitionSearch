@@ -1,0 +1,88 @@
+import speech_recognition as sr
+import os
+from googlesearch import search
+import time
+import webbrowser as browser
+import pyfiglet
+
+logo = pyfiglet.figlet_format('ARBOFF')
+boot = pyfiglet.figlet_format('BOOTING UP')
+
+r = sr.Recognizer()
+
+
+print (boot)
+print ('Please wait...')
+time.sleep(1)
+
+
+with sr.Microphone() as source:
+    os.system('cls||clear')
+    print (logo)
+    print ('\nPlease say something for Google to search...')
+    audio = r.listen(source)
+
+
+try:
+    text = r.recognize_google(audio)
+    print ('\nYou said : {}'.format(text))
+    query = text
+except:
+    print ('\nSorry, could not understand what you were saying.\nGoing to search some results for you that might help you.')
+    time.sleep(2)
+    query = 'How to speak louder'
+
+
+for j in search(query, tld='co.in', num=10, stop=10, pause=2):
+   print('\n' + j)
+
+for x in search(query, tld='co.in', num=10, stop=1, pause=2):
+   url = x
+
+def question():
+ answer = str(input('\nDo you want to open the first result ? (Y/N):'))
+
+
+ if answer == 'yes':
+      browser.open_new_tab(url)
+ elif answer == 'YES':
+      browser.open_new_tab(url)
+ elif answer == 'Y':
+      browser.open_new_tab(url)
+ elif answer == 'y':
+      browser.open_new_tab(url)
+ elif answer == 'no':
+      print ('You choose not to open any pages.Thank you for using!')
+ elif answer == 'NO':
+      print ('You choose not to open any pages.Thank you for using!')
+ elif answer == 'n':
+      print ('You choose not to open any pages.Thank you for using!')
+ elif answer == 'N':
+      print ('You choose not to open any pages.Thank you for using!')
+
+ else:
+      print ('Could not understand that')
+      question()
+
+answer = str(input('\nDo you want to open the first result ? (Y/N):'))
+
+if answer == 'yes':
+      browser.open_new_tab(url)
+elif answer == 'YES':
+      browser.open_new_tab(url) 
+elif answer == 'Y':
+      browser.open_new_tab(url) 
+elif answer == 'y':
+      browser.open_new_tab(url)
+elif answer == 'no':
+      print ('You choose not to open any pages.Thank you for using!')
+elif answer == 'NO':
+      print ('You choose not to open any pages.Thank you for using!')
+elif answer == 'n':
+      print ('You choose not to open any pages.Thank you for using!')
+elif answer == 'N':
+      print ('You choose not to open any pages.Thank you for using!')
+
+else:
+      print ('Could not understand that')
+      question()
